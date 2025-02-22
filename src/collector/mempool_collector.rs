@@ -9,13 +9,13 @@ use async_trait::async_trait;
 use eyre::WrapErr;
 use futures::prelude::{stream::FuturesUnordered, Stream};
 use futures::{FutureExt, StreamExt};
+use log::error;
 use std::future::Future;
 use std::{
     collections::VecDeque,
     pin::Pin,
     task::{Context, Poll},
 };
-use tracing::error;
 
 pub struct MempoolCollector {
     provider: Arc<dyn Provider<PubSubFrontend>>,

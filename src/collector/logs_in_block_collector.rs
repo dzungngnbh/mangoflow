@@ -33,7 +33,7 @@ impl LogsInBlockCollector {
         match logs {
             Ok(logs) => Some(logs),
             Err(e) => {
-                tracing::error!(?block_hash, "fail to get logs: {e:#}");
+                log::error!("fail to get logs: {e:#} with block hash: {block_hash}");
                 None
             }
         }

@@ -59,11 +59,11 @@ impl<T: Clone + Transport> Executor<Bytes> for RawTransactionSender<T> {
 
         match send_result {
             Ok(tx) => {
-                tracing::info!(tx = ?tx.tx_hash(), "sent tx");
+                log::info!("sent tx: {:#x}", tx.tx_hash());
             }
             Err(err) => {
                 let tx_hash = keccak256(&action);
-                tracing::error!(tx = ?tx_hash, "failed to send tx: {:#}", err);
+                log::error!("failed to send tx: {:#} with tx hash: {:#x}", err, tx_hash);
             }
         }
 

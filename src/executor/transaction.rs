@@ -132,7 +132,8 @@ impl<T: Clone + Transport> Executor<TransactionRequest> for TransactionSender<T>
             let nonce = match self.provider.get_transaction_count(account).await {
                 Ok(v) => v,
                 Err(err) => {
-                    tracing::error!(?account, "failed to get nonce: {err:#}");
+                    // log::error!("failed to get nonce: {err:#} for account: {:#x}", err, account);
+                    log::error!("failed to get nonce: {err:#}");
                     return Ok(());
                 }
             };
@@ -143,7 +144,8 @@ impl<T: Clone + Transport> Executor<TransactionRequest> for TransactionSender<T>
         let raw_tx: Bytes = match action.build(signer).await {
             Ok(v) => v.encoded_2718().into(),
             Err(err) => {
-                tracing::error!(?account, "failed to build tx: {err:#}");
+                // log::error!("failed to build tx: {err:#} for account: {:#x}", err, account);
+                log::error!("failed to build tx: {err:#}");
                 return Ok(());
             }
         };
