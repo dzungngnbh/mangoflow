@@ -18,3 +18,8 @@ cargo run --example subscribe_mempool
 cargo run --example map
 ``` 
 
+## Credits
+
+This project is inspired by and builds upon ideas from:
+
+- [Artemis](https://github.com/paradigmxyz/artemis) - A Rust framework for writing MEV bots by Paradigm
