@@ -26,3 +26,8 @@ pub use poll_full_block_collector::PollFullBlockCollector;
 
 mod interval_collector;
 pub use interval_collector::IntervalCollector;
+
+#[cfg(feature = "solana")]
+mod solana_collector;
+#[cfg(feature = "solana")]
+pub use solana_collector::SolanaCollector;
